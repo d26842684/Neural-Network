@@ -13,7 +13,7 @@ public class WordDataMap implements Serializable {
 	private ArrayList<String> data;
 
 	/**
-	 * 能够接受的最长的字符串
+	 * the max String length
 	 */
 	public static final int MAX_LENTH = 10;
 
@@ -22,21 +22,21 @@ public class WordDataMap implements Serializable {
 	}
 
 	/**
-	 * 返回一个指定位置的字符串
+	 * get a specific String
 	 * 
 	 * @param index
 	 * @return
 	 */
 	public String getData(int index) {
 		if (index >= data.size() || index < 0) {
-			return "尼玛！乱来";
+			return "";
 		} else {
 			return data.get(index);
 		}
 	}
 
 	/**
-	 * 检查容器内是否有指定字符串，如果有则返回true否则返回false
+	 * check if there is specific string in the container
 	 * 
 	 * @param str
 	 * @return
@@ -51,7 +51,7 @@ public class WordDataMap implements Serializable {
 	}
 
 	/**
-	 * 返回当前数据词典的大小
+	 * get current data size
 	 * 
 	 * @return
 	 */
@@ -60,7 +60,7 @@ public class WordDataMap implements Serializable {
 	}
 
 	/**
-	 * 向字符数据词典中添加一个字符串 如果长度大于MAX_LENTH则会自动裁剪
+	 * add string to data dictionary
 	 * 
 	 * @param str
 	 */

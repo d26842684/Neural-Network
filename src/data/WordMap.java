@@ -1,7 +1,7 @@
 package data;
 
 /**
- * 用于储存文字信息
+ * save digit info
  * 
  * @author MyGhost
  * 
@@ -9,32 +9,32 @@ package data;
 public class WordMap {
 
 	/**
-	 * 文字地图信息
+	 * word map info
 	 */
 	private int data[][];
 
 	/**
-	 * 裁剪后的文字地图信息
+	 * word map info after fixed
 	 */
 	private int scan_data[][];
 
 	/**
-	 * 格式化之后的文字地图信息
+	 * format word map info
 	 */
 	private int format_data[][];
 
 	/**
-	 * 文字位置信息
+	 * digit position info
 	 */
 	private int start_w, end_w, start_h, end_h, word_w, word_h;
 
 	/**
-	 * 标准地图块的大小
+	 * standard map size
 	 */
 	public static final int unit_width = 28, unit_height = 28;
 
 	/**
-	 * 地图大小
+	 * map size
 	 */
 	private final int width, height;
 
@@ -46,16 +46,16 @@ public class WordMap {
 	}
 
 	/**
-	 * 用于获取文字地图信息
+	 * To gain word map info
 	 * 
-	 * @return 文字地图信息
+	 * @return word map info
 	 */
 	public int[][] getMap() {
 		return data;
 	}
 
 	/**
-	 * 内部辅助函数，用于辅助检测当前区域内是否存在点痕迹
+	 * To check if there is any point in the area
 	 * 
 	 * @param start_x
 	 * @param start_y
@@ -74,7 +74,7 @@ public class WordMap {
 	}
 
 	/**
-	 * 将格式化后的地图数据复制到展示面板
+	 * copy the format map to the show board
 	 */
 	public int[][] copyMap() {
 		data = new int[width][height];
@@ -90,7 +90,7 @@ public class WordMap {
 	}
 
 	/**
-	 * 清空重置当前地图块
+	 * clear
 	 */
 	public void resetMap() {
 		data = new int[width][height];
@@ -99,7 +99,7 @@ public class WordMap {
 	}
 
 	/**
-	 * 设置地图上的点位
+	 * set the position
 	 * 
 	 * @param x
 	 * @param y
@@ -116,9 +116,9 @@ public class WordMap {
 	}
 
 	/**
-	 * 必须滞后于分析函数后调用
 	 * 
-	 * @return 检测出来的字的框架
+	 * 
+	 * @return wor map
 	 */
 	public int[][] getWordMap() {
 		scan_data = new int[word_w][word_h];
@@ -131,9 +131,8 @@ public class WordMap {
 	}
 
 	/**
-	 * 通过分析裁减过得文字地图进行格式化并返回格式化之后的结果
 	 * 
-	 * @return 格式化之后的地图信息
+	 * @return format word map info
 	 */
 	public int[][] getFormateMap() {
 		float scale_w, scale_h;
@@ -151,9 +150,9 @@ public class WordMap {
 	}
 
 	/**
-	 * 通过逐个像素分析获得当前文字的宽度
+	 * analyze every pixel to get the word width
 	 * 
-	 * @return 当前文字的宽度
+	 * @return word width
 	 */
 	public int getWordWidth() {
 		start_w = 0;
@@ -189,9 +188,9 @@ public class WordMap {
 	}
 
 	/**
-	 * 通过逐个像素分析获得当前文字的高度
+	 * analyze every pixel to get the word height
 	 * 
-	 * @return 当前文字的高度
+	 * @return word height
 	 */
 	public int getWordHeight() {
 		start_h = 0;

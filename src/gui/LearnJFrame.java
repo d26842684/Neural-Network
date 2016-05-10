@@ -27,7 +27,7 @@ public class LearnJFrame extends JFrame {
 	private JFrame context;
 
 	LearnJFrame(JFrame father,int map[][]) {
-		super("学习面板");
+		super("Train Board");
 		context=this;
 		this.setLocation(father.getLocation().x + 20,
 				father.getLocation().y + 80);
@@ -38,13 +38,13 @@ public class LearnJFrame extends JFrame {
 		JPanel temp_panel=new JPanel();
 		this.add(temp_panel);
 		temp_panel.setLayout(new GridLayout(2,1));
-		jtf_value=new JTextField("这是什么?",10);
+		jtf_value=new JTextField("What's this?",10);
 		addComponentHelper(temp_panel,jtf_value);
 		JPanel button_panel=new JPanel();
 		button_panel.setLayout(new GridLayout(1,2));
 		temp_panel.add(button_panel);
-		jbu_confirm=new JButton("确定");
-		jbu_cancel=new JButton("取消");
+		jbu_confirm=new JButton("Confirm");
+		jbu_cancel=new JButton("Cancel");
 		jbu_confirm.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -67,7 +67,7 @@ public class LearnJFrame extends JFrame {
 	}
 	
 	/**
-	 * 添加按钮辅助函数
+	 * add button
 	 * @param base
 	 * @param button
 	 */

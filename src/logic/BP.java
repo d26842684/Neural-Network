@@ -62,7 +62,7 @@ public class BP implements Serializable{
 	/**
 	 * previous weight update.
 	 */
-	private final double[][] iptHidPrevUptWeights;    //误差量继承
+	private final double[][] iptHidPrevUptWeights;    
 	/**
 	 * previous weight update.
 	 */
@@ -140,12 +140,13 @@ public class BP implements Serializable{
 	 * @param trainData
 	 * @param target
 	 */
-	public void train(double[] trainData, double[] target) {
+	public double[] train(double[] trainData, double[] target) {
 		loadInput(trainData);
 		loadTarget(target);
-		forward();
+		double[] d = forward();
 		calculateDelta();
 		adjustWeight();
+		return d;
 	}
 
 	/**
@@ -208,14 +209,10 @@ public class BP implements Serializable{
 	 * @param layer1
 	 * @param weight
 	 */
-	//有错！！！！！！
-	//有错！！！！！！
-	//有错！！！！！！
-	//有错！！！！！！
 	
-	//hidden layer 没初始化
-	//threshold 不对
-	private void forward(double[] layer0, double[] layer1, double[][] weight) {
+	//hidden layer 
+	//threshold 
+	private double[] forward(double[] layer0, double[] layer1, double[][] weight) {
 		// threshold unit.
 		layer0[0] = 0.0;
 		
@@ -235,18 +232,18 @@ public class BP implements Serializable{
 				//System.out.println("layer0= "+layer0[i]);
 				sum += weight[i][j] * layer0[i];}
 			layer1[j] = sigmoid(sum);
-			System.out.println(layer1[j]);
+//			System.out.println(layer1[j]);
 		}
-		System.out.println("===========================================");
-		
+//		System.out.println("===========================================");
+		return layer1;
 	}
 
 	/**
 	 * Forward.
 	 */
-	private void forward() {
+	private double[] forward() {
 		forward(input, hidden, iptHidWeights);
-		forward(hidden, output, hidOptWeights);
+		return forward(hidden, output, hidOptWeights);
 	}
 
 	/**
@@ -254,7 +251,7 @@ public class BP implements Serializable{
 	 */
 	
 	
-	// 没搞懂
+	
 	private void outputErr() {
 		double errSum = 0;
 		for (int idx = 1, len = optDelta.length; idx != len; ++idx) {
@@ -311,7 +308,7 @@ public class BP implements Serializable{
 				prevWeight[j][i] = newVal;
 			}
 		}
-		System.out.println("OK1");
+//		System.out.println("OK1");
 	}
 
 	/**
@@ -329,7 +326,7 @@ public class BP implements Serializable{
 	 * @return
 	 */
 	
-	//有问题
+	
 	private double sigmoid(double val) {
 		return 1d / (1d + Math.exp(-val));
 	}

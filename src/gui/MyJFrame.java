@@ -31,43 +31,43 @@ public class MyJFrame extends JFrame implements WindowListener {
 	private JButton jbu_tell, jbu_learn, jbu_clean, jbu_other;
 
 	/**
-	 * 窗口句柄
+	 * Frame
 	 */
 	public static JFrame context;
 
 	/**
-	 * 数据文件名称
+	 * data file
 	 */
 	private final String BPFileName = "DPData.ser";
 	private final String WordFileName = "WordData.ser";
 
 	public MyJFrame() {
-		super("手写识别");
+		super("Handwriting Digit Recognization");
 
 		context = this;
 		this.setLocation(200, 100);
 		/**
-		 * 触摸板界面
+		 * andwriting board 
 		 */
 		panel = new MyJPanel();
 		this.add(panel);
 		/**
-		 * 右侧功能栏界面
+		 * function panel
 		 */
 		JPanel func_panel = new JPanel();
-		jbu_tell = new JButton("识别");
+		jbu_tell = new JButton("Recognize");
 		jbu_tell.setEnabled(false);
-		jbu_learn = new JButton("学习");
+		jbu_learn = new JButton("Learn");
 		jbu_learn.setEnabled(false);
-		jbu_clean = new JButton("清屏");
+		jbu_clean = new JButton("Clear");
 		jbu_clean.setEnabled(false);
-		jbu_other = new JButton("其他");
+		jbu_other = new JButton("Resize");
 		jbu_other.setEnabled(false);
 		func_panel.setLayout(new GridLayout(8, 1));
 		addButtonHelper(func_panel, jbu_tell);
 		addButtonHelper(func_panel, jbu_learn);
 		addButtonHelper(func_panel, jbu_clean);
-		addButtonHelper(func_panel, jbu_other);
+//		addButtonHelper(func_panel, jbu_other);
 		jbu_clean.addActionListener(new ActionListener() {
 
 			@Override
@@ -86,6 +86,7 @@ public class MyJFrame extends JFrame implements WindowListener {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				panel.analysis();
 				new LearnJFrame(context, panel.getMap()).setVisible(true);
 			}
 		});
@@ -93,12 +94,13 @@ public class MyJFrame extends JFrame implements WindowListener {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				panel.analysis();
 				String result[] = Util.getMatchString(panel.getMap());
-				for (int i = 0; i < 5; ++i) {
-					System.out.print(result[i] + "|");
-				}
-				System.out.println();
-				new ExamJFrame(context, panel.getMap(), result[0])
+//				for (int i = 0; i < 5; ++i) {
+//					System.out.print(result[i] + "|");
+//				}
+				System.out.println(result[10]);
+				new ExamJFrame(context, panel.getMap(), result[10],result)
 						.setVisible(true);
 			}
 		});
@@ -149,8 +151,8 @@ public class MyJFrame extends JFrame implements WindowListener {
 				jbu_learn.setEnabled(true);
 				jbu_clean.setEnabled(true);
 				jbu_other.setEnabled(true);
-				JOptionPane.showMessageDialog(context, "BP神经网络初始化完成,耗时:"
-						+ (System.currentTimeMillis() - oldTime) + "毫秒", "提示",
+				JOptionPane.showMessageDialog(context, "System Initialized, took: "
+						+ (System.currentTimeMillis() - oldTime) + "ms", "Reminder",
 						JOptionPane.NO_OPTION);
 			}
 
@@ -158,7 +160,7 @@ public class MyJFrame extends JFrame implements WindowListener {
 	}
 
 	/**
-	 * 添加按钮辅助函数
+	 * add button
 	 * 
 	 * @param base
 	 * @param button
@@ -215,7 +217,7 @@ public class MyJFrame extends JFrame implements WindowListener {
 			}
 
 		}).start();
-		JOptionPane.showMessageDialog(context, "请等待BP神经网络完成数据保存...", "提示",
+		JOptionPane.showMessageDialog(context, "Please wait for saving...", "Reminder",
 				JOptionPane.NO_OPTION);
 	}
 

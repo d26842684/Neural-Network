@@ -12,14 +12,14 @@ public class WordDataFactory {
 	private static WordDataMap data;
 
 	/**
-	 * 无参数初始化
+	 * initialization method
 	 */
 	public static void initialization() {
 		data = new WordDataMap();
 	}
 
 	/**
-	 * 从储存好的数据中初始化
+	 * initialized by specific file
 	 * 
 	 * @param file
 	 * @throws IOException
@@ -34,7 +34,7 @@ public class WordDataFactory {
 	}
 
 	/**
-	 * 将目前的数据字典储存到文件中
+	 * save current data to specific file
 	 * 
 	 * @param file
 	 * @throws IOException
@@ -47,7 +47,7 @@ public class WordDataFactory {
 	}
 
 	/**
-	 * 向数据字典中添加数据
+	 * add data
 	 * 
 	 * @param str
 	 */
@@ -56,7 +56,7 @@ public class WordDataFactory {
 	}
 
 	/**
-	 * 返回一个指定位置的字符串
+	 * return String according to index
 	 * 
 	 * @param index
 	 * @return
@@ -66,7 +66,7 @@ public class WordDataFactory {
 	}
 
 	/**
-	 * 字符串转换成能够匹配的二进制 长度为MAX_LENTH*16
+	 * String to Binary the length is MAX_LENTH*16
 	 * 
 	 * @param data
 	 * @return
@@ -88,7 +88,7 @@ public class WordDataFactory {
 	}
 
 	/**
-	 * 返回两个字符串的匹配度 此匹配算法有待改进
+	 * return the match result of two String
 	 * 
 	 * @param str1
 	 * @param str2
@@ -106,7 +106,7 @@ public class WordDataFactory {
 	}
 
 	/**
-	 * 检查容器内是否有指定字符串，如果有则返回true否则返回false
+	 * check if there is specific String
 	 * 
 	 * @param str
 	 * @return
@@ -116,7 +116,7 @@ public class WordDataFactory {
 	}
 
 	/**
-	 * 返回当前数据词典的大小
+	 * return size
 	 * 
 	 * @return
 	 */

@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -25,16 +26,18 @@ public class ExamJFrame extends JFrame {
 	
 	private JFrame context;
 
-	ExamJFrame(JFrame father,final int map[][],final String value) {
-		super("识别面板");
+	ExamJFrame(JFrame father,final int map[][],final String value,String[] s) {
+		super("Recognization");
 		context=this;
 		this.setLocation(father.getLocation().x + 20,
 				father.getLocation().y + 80);
-		this.setLayout(new GridLayout(1, 2));
+		this.setLayout(new GridLayout(2,1));
+		JPanel grid_jp = new JPanel(new GridLayout(1,2));
+		this.add(grid_jp);
 		image=new ImageJPanel(map);
-		this.add(image);
+		grid_jp.add(image);
 		JPanel temp_panel=new JPanel();
-		this.add(temp_panel);
+		grid_jp.add(temp_panel);
 		temp_panel.setLayout(new GridLayout(2,1));
 		jtf_value=new JTextField(value,10);
 		jtf_value.setEnabled(false);
@@ -42,8 +45,15 @@ public class ExamJFrame extends JFrame {
 		JPanel button_panel=new JPanel();
 		button_panel.setLayout(new GridLayout(1,2));
 		temp_panel.add(button_panel);
-		jbu_confirm=new JButton("正确");
-		jbu_cancel=new JButton("错误");
+		jbu_confirm=new JButton("Correct");
+		jbu_cancel=new JButton("Wrong");
+		
+		String []result= new String[10];
+		for(int i=0;i<10;i++){
+			result[i] ="P("+ i +") = "+ s[i];
+		}
+		JList jlist = new JList(result);
+		this.add(jlist);
 		jbu_confirm.addActionListener(new ActionListener() {
 			
 			@Override
@@ -68,7 +78,7 @@ public class ExamJFrame extends JFrame {
 	}
 	
 	/**
-	 * 添加按钮辅助函数
+	 * add button
 	 * @param base
 	 * @param button
 	 */

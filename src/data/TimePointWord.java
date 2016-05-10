@@ -7,7 +7,7 @@ import data.TimePointData;
 public class TimePointWord {
 	
 	/**
-	 * 用于储存坐标点
+	 * save coordinate point info
 	 */
 	private Vector<TimePointData> points;
 	
@@ -16,7 +16,7 @@ public class TimePointWord {
 	}
 	
 	/**
-	 * 向采集库中添加一个单独的坐标点
+	 * add single coordinate point to dataset
 	 * @param x
 	 * @param y
 	 * @param z

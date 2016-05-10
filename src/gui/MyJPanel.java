@@ -19,17 +19,17 @@ public class MyJPanel extends JPanel implements MouseMotionListener {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 保存绘制的文字数据坐标
+	 * to save the digit location info
 	 */
 	private WordMap word;
 
 	/**
-	 * 用于绘制的地图缓存
+	 * the image to show
 	 */
 	private int[][] work_map;
 
 	/**
-	 * 绘制面板的长和宽
+	 * define the width and height
 	 */
 	private final int width = 400;
 	private final int height = 400;
@@ -42,7 +42,7 @@ public class MyJPanel extends JPanel implements MouseMotionListener {
 	}
 	
 	/**
-	 * 清除屏幕
+	 * clear screen
 	 */
 	void clearScreen() {
 		word.resetMap();
@@ -50,21 +50,21 @@ public class MyJPanel extends JPanel implements MouseMotionListener {
 	}
 	
 	/**
-	 * 分析辅助函数
+	 * word size analysis
 	 */
 	void analysis() {
 		int temp_width = word.getWordWidth();
 		int temp_height = word.getWordHeight();
 		work_map = word.getWordMap();
-		System.out.println("the word's size is: width:" + temp_width
-				+ " height:" + temp_height);
+//		System.out.println("the word's size is: width:" + temp_width
+//				+ " height:" + temp_height);
 		word.getFormateMap();
 		word.copyMap();
 		this.repaint();
 	}
 	
 	/**
-	 * 返回地图格式化之后的数据
+	 * get format map
 	 * @return
 	 */
 	int[][] getMap() {
@@ -75,15 +75,15 @@ public class MyJPanel extends JPanel implements MouseMotionListener {
 
 	public void paint(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
-		g2d.setColor(Color.WHITE);// 使用大写方便跨平台
+		g2d.setColor(Color.WHITE);
 		g2d.fillRect(0, 0, width, height);
-		g2d.setColor(Color.CYAN);// 使用大写方便跨平台
+		g2d.setColor(Color.CYAN);
 		g2d.drawLine(width / 2, 0, width / 2, height);
 		g2d.drawLine(0, height / 2, width, height / 2);
 		g2d.drawRect((width - WordMap.unit_width) / 2,
 				(height - WordMap.unit_height) / 2, WordMap.unit_width,
 				WordMap.unit_height);
-		g2d.setColor(Color.BLACK);// 使用大写方便跨平台
+		g2d.setColor(Color.BLACK);
 		work_map = word.getMap();
 		for (int i = 0; i < width; ++i) {
 			for (int j = 0; j < height; ++j) {
@@ -97,7 +97,7 @@ public class MyJPanel extends JPanel implements MouseMotionListener {
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		/**
-		 * 绘制的时候为了增加文字信息量所以绘制多个点
+		 * crease the pen width to gain more digit info
 		 */
 		word.setPoint(e.getX() - 3, e.getY());
 		word.setPoint(e.getX() + 3, e.getY());

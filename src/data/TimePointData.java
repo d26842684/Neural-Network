@@ -3,17 +3,17 @@ package data;
 public class TimePointData {
 	
 	/**
-	 * 分别用于记录点的x，y坐标以及z轴的压力值
+	 * record the x,y,z position
 	 */
 	public int x,y,z;
 	
 	/**
-	 * 用于记录x,y,z上的速度分量
+	 * record x,y,z speed vector
 	 */
 	public double vx,vy,vz;
 	
 	/**
-	 * 点的序号
+	 * index
 	 */
 	public long index;
 	

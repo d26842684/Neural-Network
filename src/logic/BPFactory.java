@@ -8,13 +8,11 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public class BPFactory {
-	/**
-	 * BP神经网络元
-	 */
+	
 	private static BP bp;
 	
 	/**
-	 * 初始化一个全新的bp神经网络
+	 * initialize BPNN
 	 * @param inputSize
 	 * @param hiddenSize 
 	 * @param outputSize
@@ -24,7 +22,7 @@ public class BPFactory {
 	}
 	
 	/**
-	 * 从文件数据中读取bp神经网络
+	 * read BPNN info from file
 	 * @param file
 	 * @throws IOException
 	 * @throws ClassNotFoundException
@@ -37,7 +35,7 @@ public class BPFactory {
 	}
 	
 	/**
-	 * 将目前的神经网络储存在指定文件
+	 * save the BPNN to specific file
 	 * @param file
 	 * @throws IOException
 	 */
@@ -49,16 +47,16 @@ public class BPFactory {
 	}
 	
 	/**
-	 * 训练BP神经网络
+	 * train BPNN
 	 * @param trainData
 	 * @param target
 	 */
-	public static void train(double[] trainData, double[] target) {
-		bp.train(trainData, target);
+	public static double[] train(double[] trainData, double[] target) {
+		return bp.train(trainData, target);
 	}
 	
 	/**
-	 * 要求bp神经网络返回预测值
+	 * return test result
 	 * @param inData
 	 * @return
 	 */
