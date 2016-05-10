@@ -3,12 +3,6 @@ package logic;
 import java.io.Serializable;
 import java.util.Random;
 
-/**
- * BPNN.
- * 
- * @author RenaQiu
- * 
- */
 public class BP implements Serializable{
 	/**
 	 * 
