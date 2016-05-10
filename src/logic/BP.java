@@ -68,20 +68,6 @@ public class BP implements Serializable{
 
 	private final Random random;
 
-	/**
-	 * Constructor.
-	 * <p>
-	 * <strong>Note:</strong> The capacity of each layer will be the parameter
-	 * plus 1. The additional unit is used for smoothness.
-	 * </p>
-	 * 
-	 * @param inputSize
-	 * @param hiddenSize
-	 * @param outputSize
-	 * @param eta
-	 * @param momentum
-	 * @param epoch
-	 */
 	public BP(int inputSize, int hiddenSize, int outputSize, double eta,
 			double momentum) {
 
@@ -116,24 +102,10 @@ public class BP implements Serializable{
 			}
 	}
 
-	/**
-	 * Constructor with default eta = 0.25 and momentum = 0.3.
-	 * 
-	 * @param inputSize
-	 * @param hiddenSize
-	 * @param outputSize
-	 * @param epoch
-	 */
 	public BP(int inputSize, int hiddenSize, int outputSize) {
 		this(inputSize, hiddenSize, outputSize, 0.5, 0.9);
 	}
 
-	/**
-	 * Entry method. The train data should be a one-dim vector.
-	 * 
-	 * @param trainData
-	 * @param target
-	 */
 	public double[] train(double[] trainData, double[] target) {
 		loadInput(trainData);
 		loadTarget(target);
@@ -143,12 +115,6 @@ public class BP implements Serializable{
 		return d;
 	}
 
-	/**
-	 * Test the BPNN.
-	 * 
-	 * @param inData
-	 * @return
-	 */
 	public double[] test(double[] inData) {
 		if (inData.length != input.length - 1) {
 			throw new IllegalArgumentException("Size Do Not Match.");
