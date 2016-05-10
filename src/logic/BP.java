@@ -1,4 +1,4 @@
-package ghost.writer.logic;
+package logic;
 
 import java.io.Serializable;
 import java.util.Random;

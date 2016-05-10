@@ -1,6 +1,6 @@
 import java.util.Vector;
 
-import src.ghost.writer.data.TimePointData;
+import data.TimePointData;
 
 public class TimePointWord {
 	
