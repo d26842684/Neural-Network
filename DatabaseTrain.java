@@ -19,7 +19,7 @@ public class DatabaseTrain {
                
              //reader.readHeaders(); // skip the head  
                
-             while(reader.readRecord()){ //逐行读入除表头的数据      
+             while(reader.readRecord()){ //read the data      
                  csvList.add(reader.getValues());  
              }              
              reader.close();  
@@ -27,7 +27,7 @@ public class DatabaseTrain {
                
             // for(int row=0;row<csvList.size();row++){  
                    
-              //   String  cell = csvList.get(row)[1]; //取得第row行第0列的数据  
+              //   String  cell = csvList.get(row)[1]; //get the data at row 0 col 1 
                 // System.out.println(cell);  
                    
              //} 
@@ -54,7 +54,7 @@ public class DatabaseTrain {
             	 System.out.println(1);
             	 System.out.println("the label is "+x+"the row is "+row);
              }
-             String BPFileName = "DPData.ser";
+             String BPFileName = "DPData.ser"; // save the file
          	 String WordFileName = "WordData.ser";
          	File file = new File(BPFileName);
 			if (!file.exists()) {
