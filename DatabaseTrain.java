@@ -12,6 +12,39 @@ public class DatabaseTrain {
 
 	public static void main(String[] arg) throws IOException{
 		try {      
+			String BPFileName = "DPData.ser";
+	 		String WordFileName = "WordData.ser";
+			File file = new File(BPFileName);
+			if (file.exists()) {
+		try {
+			BPFactory.initialization(file);
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	} else {
+			BPFactory.initialization(28*28, 86,
+				10);
+	}
+
+	file = new File(WordFileName);
+	if (file.exists()) {
+		try {
+			WordDataFactory.initialization(file);
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	} else {
+		WordDataFactory.initialization();
+	}
+            
             
             ArrayList<String[]> csvList = new ArrayList<String[]>(); //store the data  
             String csvFilePath = "/Users/Sanky/Downloads/2.csv";  
@@ -54,16 +87,16 @@ public class DatabaseTrain {
             	 System.out.println(1);
             	 System.out.println("the label is "+x+"the row is "+row);
              }
-             String BPFileName = "DPData.ser"; // save the file
-         	 String WordFileName = "WordData.ser";
-         	File file = new File(BPFileName);
-			if (!file.exists()) {
-				try {
-					file.createNewFile();
-				} catch (IOException e1) {
+             	 //String BPFileName = "DPData.ser"; // save the file
+         	 //String WordFileName = "WordData.ser";
+         	 File file = new File(BPFileName);
+		 if (!file.exists()) {
+			try {
+				file.createNewFile();
+			} catch (IOException e1) {
 					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				e1.printStackTrace();
+			}
 			}
 			try {
 				BPFactory.save(file);
