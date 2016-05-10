@@ -13,6 +13,7 @@ public class BP implements Serializable{
 	/**
 	 * 
 	 */
+	
 	private static final long serialVersionUID = 1L;
 	/**
 	 * input vector.
@@ -116,7 +117,8 @@ public class BP implements Serializable{
 		for (int i = 0, len = matrix.length; i != len; i++)
 			for (int j = 0, len2 = matrix[i].length; j != len2; j++) {
 				double real = random.nextDouble();
-				matrix[i][j] = random.nextDouble() > 0.5 ? real : -real;
+			
+				matrix[i][j] = real-0.5;
 			}
 	}
 
@@ -129,7 +131,7 @@ public class BP implements Serializable{
 	 * @param epoch
 	 */
 	public BP(int inputSize, int hiddenSize, int outputSize) {
-		this(inputSize, hiddenSize, outputSize, 0.25, 0.9);
+		this(inputSize, hiddenSize, outputSize, 0.5, 0.9);
 	}
 
 	/**
@@ -180,6 +182,7 @@ public class BP implements Serializable{
 	 * @param arg
 	 */
 	private void loadTarget(double[] arg) {
+		System.out.println("arg.length="+arg.length+" target.length="+target.length);
 		if (arg.length != target.length - 1) {
 			throw new IllegalArgumentException("Size Do Not Match.");
 		}
@@ -214,13 +217,28 @@ public class BP implements Serializable{
 	//threshold ²»¶Ô
 	private void forward(double[] layer0, double[] layer1, double[][] weight) {
 		// threshold unit.
-		layer0[0] = 1.0;
+		layer0[0] = 0.0;
+		
 		for (int j = 1, len = layer1.length; j != len; ++j) {
+			
 			double sum = 0;
-			for (int i = 0, len2 = layer0.length; i != len2; ++i)
-				sum += weight[i][j] * layer0[i];
+			/*System.out.println(layer0.length);
+			for(int x=0;x<20;x++){
+				for(int y=0;y<20;y++)
+				{
+					System.out.print(layer0[x*20+y]);
+				}
+				System.out.println();
+			}
+			*/
+			for (int i = 0, len2 = layer0.length; i != len2; ++i){
+				//System.out.println("layer0= "+layer0[i]);
+				sum += weight[i][j] * layer0[i];}
 			layer1[j] = sigmoid(sum);
+			System.out.println(layer1[j]);
 		}
+		System.out.println("===========================================");
+		
 	}
 
 	/**
@@ -281,18 +299,19 @@ public class BP implements Serializable{
 	 */
 	
 	///trouble
+	
 	private void adjustWeight(double[] delta, double[] layer,
 			double[][] weight, double[][] prevWeight) {
 
-		layer[0] = 1;
+		layer[0] = 0;
 		for (int i = 1, len = delta.length; i != len; ++i) {
-			for (int j = 0, len2 = layer.length; j != len2; ++j) {
-				double newVal = momentum * prevWeight[j][i] + eta * delta[i]
-						* layer[j];
+			for (int j = 1, len2 = layer.length; j != len2; ++j) {
+				double newVal =eta * delta[i]* layer[j];
 				weight[j][i] += newVal;
 				prevWeight[j][i] = newVal;
 			}
 		}
+		System.out.println("OK1");
 	}
 
 	/**

@@ -21,11 +21,19 @@ public class Util {
 				temp_index++;
 			}
 		}
-		String temp_str=WordDataFactory.StringToBinary(data);
-		double double_data[]=new double[16*WordDataMap.MAX_LENTH];
-		for(int i=0;i<16*WordDataMap.MAX_LENTH;++i) {
-			double_data[i]=Double.parseDouble(temp_str.charAt(i)+"");
+		int i;
+		i=Integer.parseInt(data);
+		
+		//String temp_str=WordDataFactory.StringToBinary(data);
+		double double_data[]=new double[10];
+		double_data[i]=1;
+		for(int a=0;a<10;a++){
+			System.out.print(double_data[a]);
 		}
+		System.out.println();;
+		//for(int i=0;i<10;++i) {
+			//double_data[i]=Double.parseDouble(temp_str.charAt(i)+"");
+		//}
 		BPFactory.train(double_map, double_data);
 		if(!WordDataFactory.checkContains(data)) {
 			WordDataFactory.addData(data);
@@ -47,8 +55,21 @@ public class Util {
 			}
 		}
 		double temp_value[]=BPFactory.test(double_map);
-		String str1="";
-		for(int i=0;i<16*WordDataMap.MAX_LENTH;++i) {
+		double high=0;
+		int index=0;
+		for(int i=0;i<10;i++){
+			if (temp_value[i]>high){
+				high=temp_value[i];
+				index=i;}
+			
+			
+		}
+		String result="highest output"+high+" number "+index;
+		System.out.println(result);
+		String a[]=new String[]{"我不知道!","我不知道!","我不知道!","我不知道!","我不知道!"};
+		return a;
+		/*String str1="";
+		for(int i=0;i<10;++i) {
 			if (temp_value[i] > 0.5) {
 				str1 += 1;
 			} else {
@@ -74,9 +95,9 @@ public class Util {
 		}
 		for(int i=0;i<5;++i) {
 			System.out.print(rank[i]+"|");
-		}
-		System.out.println();
-		return result;
+		}*/
+		//System.out.println();
+		//return result;
 	}
 	
 }

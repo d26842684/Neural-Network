@@ -125,9 +125,9 @@ public class MyJFrame extends JFrame implements WindowListener {
 					}
 				} else {
 					BPFactory.initialization(WordMap.unit_width
-							* WordMap.unit_height, WordMap.unit_width
-							* WordMap.unit_height + 16 * WordDataMap.MAX_LENTH,
-							16 * WordDataMap.MAX_LENTH);
+							* WordMap.unit_height, 86,
+							10);
+					System.out.println("the width is"+WordMap.unit_width+"height is "+WordMap.unit_height+"the lenth is"+WordDataMap.MAX_LENTH);
 				}
 
 				file = new File(WordFileName);

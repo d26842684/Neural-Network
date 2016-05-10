@@ -31,7 +31,7 @@ public class WordMap {
 	/**
 	 * 标准地图块的大小
 	 */
-	public static final int unit_width = 50, unit_height = 50;
+	public static final int unit_width = 28, unit_height = 28;
 
 	/**
 	 * 地图大小
