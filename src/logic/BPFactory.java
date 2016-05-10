@@ -52,7 +52,14 @@ public class BPFactory {
 	 * @param target
 	 */
 	public static double[] train(double[] trainData, double[] target) {
-		return bp.train(trainData, target);
+		double[] trainData1=new double[28*28];
+		for(int i=0;i<28;i++){
+			for(int j=0;j<28;j++){
+				trainData1[i*28+j]=trainData[j*28+i];
+				System.out.print(trainData1[i*28+j]);}
+			System.out.println();
+		}
+		return bp.train(trainData1, target);
 	}
 	
 	/**
@@ -60,7 +67,14 @@ public class BPFactory {
 	 * @param inData
 	 * @return
 	 */
-	public static double[] test(double[] inData) {
-		return bp.test(inData);
+	public static double[] test(double[] trainData) {
+		double[] trainData1=new double[28*28];
+		for(int i=0;i<28;i++){
+			for(int j=0;j<28;j++){
+				trainData1[i*28+j]=trainData[j*28+i];
+				System.out.print(trainData1[i*28+j]);}
+			System.out.println();
+		}
+		return bp.test(trainData1);
 	}
 }
