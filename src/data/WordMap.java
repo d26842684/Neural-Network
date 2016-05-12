@@ -2,9 +2,6 @@ package data;
 
 /**
  * save digit info
- * 
- * @author MyGhost
- * 
  */
 public class WordMap {
 
